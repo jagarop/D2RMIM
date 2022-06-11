@@ -48,6 +48,9 @@ namespace MultiInstanceManager
             this.saveAccounInfo = new System.Windows.Forms.CheckBox();
             this.configureAccountsButton = new System.Windows.Forms.Button();
             this.appVersion = new System.Windows.Forms.Label();
+            this.NA = new System.Windows.Forms.Button();
+            this.EU = new System.Windows.Forms.Button();
+            this.KR = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -196,11 +199,44 @@ namespace MultiInstanceManager
             this.appVersion.TabIndex = 20;
             this.appVersion.Text = "Version: ";
             // 
+            // NA
+            // 
+            this.NA.ForeColor = System.Drawing.Color.Red;
+            this.NA.Location = new System.Drawing.Point(248, 329);
+            this.NA.Name = "NA";
+            this.NA.Size = new System.Drawing.Size(40, 20);
+            this.NA.TabIndex = 25;
+            this.NA.Text = "NA";
+            this.NA.UseVisualStyleBackColor = true;
+            // 
+            // EU
+            // 
+            this.EU.ForeColor = System.Drawing.Color.Blue;
+            this.EU.Location = new System.Drawing.Point(294, 329);
+            this.EU.Name = "EU";
+            this.EU.Size = new System.Drawing.Size(40, 20);
+            this.EU.TabIndex = 24;
+            this.EU.Text = "EU";
+            this.EU.UseVisualStyleBackColor = true;
+            // 
+            // KR
+            // 
+            this.KR.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.KR.Location = new System.Drawing.Point(340, 329);
+            this.KR.Name = "KR";
+            this.KR.Size = new System.Drawing.Size(40, 20);
+            this.KR.TabIndex = 23;
+            this.KR.Text = "KR";
+            this.KR.UseVisualStyleBackColor = true;
+            // 
             // MultiInstanceManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 392);
+            this.Controls.Add(this.NA);
+            this.Controls.Add(this.EU);
+            this.Controls.Add(this.KR);
             this.Controls.Add(this.appVersion);
             this.Controls.Add(this.configureAccountsButton);
             this.Controls.Add(this.saveAccounInfo);
@@ -244,6 +280,9 @@ namespace MultiInstanceManager
         private System.Windows.Forms.CheckBox saveAccounInfo;
         private System.Windows.Forms.Button configureAccountsButton;
         private System.Windows.Forms.Label appVersion;
+        private System.Windows.Forms.Button NA;
+        private System.Windows.Forms.Button EU;
+        private System.Windows.Forms.Button KR;
     }
 }
 

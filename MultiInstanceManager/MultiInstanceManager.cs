@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using System.Linq;
 using static Dfust.Hotkeys.Enums;
 using System.Threading;
+using Microsoft.Win32;
+
 
 namespace MultiInstanceManager
 {
@@ -52,6 +54,10 @@ namespace MultiInstanceManager
             refreshButton.Click += new EventHandler(refreshButton_Click);
             readmeLink.Click += new EventHandler(readmeLink_Click);
             dumpRegKeyButton.Click += new EventHandler(dumpRegKeyButton_Click);
+            NA.Click += new EventHandler(NA_Click);
+            EU.Click += new EventHandler(EU_Click);
+            KR.Click += new EventHandler(KR_Click);
+
             forceExit.CheckedChanged += new EventHandler(forceExit_Changed);
             forceExit.Checked = ConfigurationManager.AppSettings.Get("forceExitClients")?.ToString() == "true" ? true : false;
             saveAccounInfo.Checked = ConfigurationManager.AppSettings.Get("saveCredentials")?.ToString() == "true" ? true : false;
@@ -300,6 +306,9 @@ namespace MultiInstanceManager
             addAccountButton.Enabled = true;
             launchButton.Enabled = true;
             refreshButton.Enabled = true;
+            NA.Enabled = true;
+            EU.Enabled = true;
+            KR.Enabled = true;
         }
         private void DisableButtons()
         {
@@ -307,7 +316,9 @@ namespace MultiInstanceManager
             addAccountButton.Enabled = false;
             launchButton.Enabled = false;
             refreshButton.Enabled = false;
-
+            NA.Enabled = false;
+            EU.Enabled = false;
+            KR.Enabled = false;
         }
         private async void refreshButton_Click(object sender, System.EventArgs e)
         {
@@ -338,5 +349,29 @@ namespace MultiInstanceManager
             Process.Start(path + "\\README.txt");
         }
 
+        private void NA_Click(object sender, System.EventArgs e)
+        {
+            ChangeRegion("NA");
+        }
+
+        private void EU_Click(object sender, System.EventArgs e)
+        {
+            ChangeRegion("EU");
+        }
+
+        private void KR_Click(object sender, System.EventArgs e)
+        {
+            ChangeRegion("KR");
+        }
+
+        private void ChangeRegion(string region)
+        {
+            DisableButtons();
+            var regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Blizzard Entertainment\\Battle.net\\Launch Options\\OSI", true);
+            regKey.SetValue("REGION", region);
+            regKey.Close();
+            Task.Delay(100).Wait();
+            EnableButtons();
+        }
     }
 }
