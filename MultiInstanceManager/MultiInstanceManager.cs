@@ -87,8 +87,8 @@ namespace MultiInstanceManager
             MH = new MultiHandler(this, accountList);
             MH.SetCredentialMode(saveAccounInfo.Checked);
             // Start the Monitors early:
-            MH.StartProcessMonitor();
-            MH.StartAudioMonitor();
+            //MH.StartProcessMonitor();
+            //MH.StartAudioMonitor();
 
             // Prepare keybinds
             Debug.WriteLine("Adding keybinds");
